@@ -1,4 +1,7 @@
 Cancan::Application.routes.draw do
+  get 'sign_up' => 'users#new', :as => :sign_up
+  get 'login' => 'sessions#new', :as => :login
+  delete 'logout' => 'sessions#destroy', :as => :logout
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -12,7 +15,13 @@ Cancan::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :users, :tweets
+  resources :sessions
+  resources :cans, :only => [:index, :show, :new, :create, :edit, :update] do
+    collection do
+      get :nearby
+    end
+  end
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -48,7 +57,7 @@ Cancan::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,30 @@
+!!! 5
+%html
+  %head
+    %meta{charset: "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= 'page_title'
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = stylesheet_link_tag 'http://fonts.googleapiscom/css?family=Trocchi'
+    - if content_for? :head
+      = yield :head
+    = csrf_meta_tags
+  %body
+    #wrap
+      #sidebar
+        #blog_title
+          %a{ :href=> "#" } Karma
+        #blog_description
+          %p This is a describe
+        %ul#blog_links
+          %li
+            %a#j1{ :href => "#",:onmouseover => "j1o()", :onmouseout => "j1t()", :style => "color: #c02942" } 通知
+          %li
+            %a#j2{ :href => "#", :onmouseover => "j2o()", :onmouseout => "j2t()",:style => "color: #d95b43;"} 猜猜今天吃什么
+          -if current_user
+            %li
+              = link_to t('logout'), logout_path, :method => :delete, :onmouseover => "j6o()", :onmouseout => "j6t()",:style => "color: #d95b43;"
+      =yield
+
+    

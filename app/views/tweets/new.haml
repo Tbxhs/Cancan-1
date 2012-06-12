@@ -1,0 +1,36 @@
+#content
+  .post
+    %ul.tags
+      %li
+        %a{ :href => "#" } 在这里吃晚餐
+      %li
+        %a{ :href => "#" } 看看怎么走
+      %li
+        %a{ :href => "#" } 下次来这儿吃                                   
+    .regular
+      .link
+        %h2
+          New tweet
+      -if @tweet.can
+        .text
+          %p
+            %h3=@tweet.can.name
+          %p= t 'description' # + @can.description.to_s
+          %p= t 'address: ' + @tweet.can.address
+          %p= t 'telephone: ' + @tweet.can.telephone
+          %p 特色菜
+          %p 标签
+      -else
+        .text
+          %p 
+            还没有选择去哪吃呢!  
+            =link_to "现在选一个", nearby_cans_path , :class => "btn btn-large btn-primary"
+      .tweets
+        = form_tag(tweets_path , :class => "form-horizontal") do
+          %fieldset
+            =gravatar_img(current_user, :size => 64)
+            =text_area(:tweet, :content, :style => "width:400px", :rows => 3, :tabIndex => 1)
+            =hidden_field_tag("tweet[can_id]", @tweet.can_id )
+            =submit_tag "GO", :class => "btn btn-large btn-primary", :tabIndex => 2
+
+

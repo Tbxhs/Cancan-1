@@ -1,0 +1,31 @@
+#content
+  .post
+    %ul.tags
+      %li
+        %a{ :href => "#" } 关注
+      %li
+        %a{ :href => "#" } 发送私信
+      %li
+        %a{ :href => "#" } 对他(她)说
+    .regular
+      .text
+        %table
+          %tr
+            %td{ :rowspan => 4 }
+              =gravatar_img(@user, :size => 128)
+            %td{ :rowspan => 4 }
+              &nbsp;&nbsp;
+            %td
+              %h3=@user.login
+          %tr             
+            %td
+              %em= t 'sex' + 'city'
+          %tr
+            %td{ :rowspan => 2 }
+              签名签名签名签名签名签名签名签名签名签名签名签名
+              签名签名签名签名签名签名签名签名签名签名签名签名
+              签名签名签名签名签名签名签名签名签名签名签名签名
+              签名签名签名签名签名签名签名签名签名签名签名签名
+      .tweets
+        ddd
+

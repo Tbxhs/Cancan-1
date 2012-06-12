@@ -5,7 +5,7 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
+gem 'sqlite3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,11 +19,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'haml'
+gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+gem 'gravtastic'
 
-gem "mongoid", "~> 3.0.0.rc"
-
-gem 'rspec-rails' ,:group => [:development,:test]
+gem 'rspec-rails', :group => [:development,:test]
 gem 'rb-fsevent', :group => :development
 gem 'growl', :group => :development
 gem 'guard-pow', :group => :development
@@ -48,14 +49,13 @@ gem 'guard-pow', :group => :development
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'factory_girl_rails' , "~> 1.1.0" ,:require => false
-  gem 'database_cleaner', ">= 0.6.7"
-  gem 'mongoid-rspec', ">= 1.4.4"
-  gem "capybara",">= 1.1.1"
-  gem "launchy", ">= 2.0.5"
+  gem 'factory_girl_rails' , '~> 1.1.0' ,:require => false
+  gem 'database_cleaner', '>= 0.6.7'
+  gem 'capybara','>= 1.1.1'
+  gem 'launchy', '>= 2.0.5'
   gem 'guard-spork'
   gem 'spork', '~> 0.9.0'
-  gem "guard-rspec"
+  gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'guard-bundler'
 end
