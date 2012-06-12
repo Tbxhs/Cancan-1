@@ -1,10 +1,13 @@
 #content
-  .cancan
+  .post
+    %ul.tags
+      %li
+        %a{ :href => "http://www.baidu.com" } 百度
     .regular
       .text
         %section#login-form.box
           %legend= t('new_can')
-          #container{ :style => "width:430px;height:340px;border:1px solid gray"}
+          #container{ :style => "width:540px;height:360px;border:1px solid gray"}
         = form_for @can, :url => cans_path, :validate => true do |f|
           %fieldset
             .control-group

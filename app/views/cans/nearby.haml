@@ -1,0 +1,34 @@
+#content
+  .post
+    %ul.tags
+      %li
+        %a{ :href => "#" } 在这里吃晚餐
+    .regular
+      .text
+        #container{ :style => "width:540px;height:360px;border:1px solid gray" }
+        #results{ :style => "font-size:13px;margin-top:10px;" }
+%script{ :type => "text/javascript", :src => "http://api.map.baidu.com/api?v=1.3"}
+:javascript
+  var map = new BMap.Map("container");
+  map.enableScrollWheelZoom();
+  var lng,lat;
+  var geolocation = new BMap.Geolocation();
+  geolocation.getCurrentPosition(function(r){
+    if(this.getStatus() == BMAP_STATUS_SUCCESS){
+      lng = r.point.lng;
+      lat = r.point.lat;
+    }
+    else {
+      //alert('failed'+this.getStatus());
+    }
+  })
+  if(lng)
+    map.centerAndZoom(new BMap.Point(lng, lat), 11);
+  else
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+  var point = new BMap.Point();
+  var local = new BMap.LocalSearch(map, {
+    renderOptions:{map: map, panel: "results" , autoViewport:true}
+  });
+  local.searchNearby("小吃","卢沟桥");
+  //local.search("魏公村");
